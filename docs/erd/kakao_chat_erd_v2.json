@@ -1,0 +1,2446 @@
+{
+  "tables": [
+    {
+      "id": "bbfo-rxrm1SrBpY7PkEpr",
+      "name": "USER",
+      "x": -47.48681544300689,
+      "y": -433.5764880116706,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "회원 고유 번호 (시스템용)",
+          "id": "WOtXgFHDEaSoZLbO0Dggh",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "e2KSPESeSGrOL0PypQiR_",
+          "name": "email",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "로그인에 사용할 이메일 아이디",
+          "size": 100
+        },
+        {
+          "id": "g43wxChJsaCcqv77oQ2ea",
+          "name": "password",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "암호화된 비밀번호",
+          "size": 255
+        },
+        {
+          "id": "3I9wBtWiefbe8o3IQh6hf",
+          "name": "phone_number",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "국제 전화번호 (예: +821012345678)",
+          "size": 20,
+          "values": []
+        },
+        {
+          "id": "n4Gbv11yvVD0y7uugGWXn",
+          "name": "oauth_provider",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "GOOGLE, KAKAO, APPLE 등",
+          "size": 20
+        },
+        {
+          "id": "Z8iU6NGLoEOHNxrMqLUFK",
+          "name": "oauth_id",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "소셜 로그인 고유 ID",
+          "size": 255
+        },
+        {
+          "id": "tDoiPmmErvM6s1SW2pVR6",
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "가입 일자",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#e47773",
+      "collapsed": false,
+      "hidden": false
+    },
+    {
+      "id": "svU0AA38ooQEjLdxdKCJL",
+      "name": "PROFILE",
+      "x": -705.9367645536404,
+      "y": -286.66933861657736,
+      "locked": false,
+      "fields": [
+        {
+          "name": "profile_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "BentlUkqXixmUx8A31CH3",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "WymQ9_Ik4FeS0-d4HVqZT",
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "이 프로필을 소유한 유저",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "pleAOOUK1T01LBno4Ufps",
+          "name": "nickname",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "채팅방에 보여지는 이름",
+          "size": 50,
+          "values": []
+        },
+        {
+          "id": "WuCtszY3hN3SM9Pku7l5s",
+          "name": "status_message",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 100
+        },
+        {
+          "id": "geDH-ehzB6al46udvfsLF",
+          "name": "profile_image_url",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "프로필 사진 경로",
+          "size": 500
+        },
+        {
+          "id": "YpTwbpMVGeaSz3s_wUN1Q",
+          "name": "profile_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "프로필 종류 (MAIN, MULTI, OPEN_FRIENDS, OPEN_CUSTOM 등)",
+          "size": 20
+        },
+        {
+          "id": "PtiGJqmBPNv0TUeu8THDh",
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "B-EpVRm2700taMn1uu2K3",
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [
+        {
+          "id": 0,
+          "name": "uq_user_profile",
+          "fields": [
+            "profile_id",
+            "user_id"
+          ]
+        }
+      ],
+      "color": "#e47773",
+      "collapsed": false
+    },
+    {
+      "id": "0Sdi_WTzLaYX894kpF9WW",
+      "name": "AUTH_SESSION",
+      "x": -47.97682943374787,
+      "y": -65.17645498717806,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "iIjEj0OV7dknXW3LUy4lK",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "IqVZI78E-yhEhRiT-b_7j",
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "UNIQUE라서 유저당 세션 row가 항상 1개 → 신규 로그인 시 UPSERT로 기존 세션 자동 교체",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "ly0ngtKhxF_hrgzzIqVxn",
+          "name": "device_id",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "현재 활성 디바이스 식별자",
+          "size": 255
+        },
+        {
+          "id": "BJ1swh_IaWVZSiiGbZtHY",
+          "name": "refresh_token",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "재발급용 토큰 (평문 저장 금지, 해시 저장 권장)",
+          "size": 500
+        },
+        {
+          "id": "_Q8QoCxD9keD4eDao8HhN",
+          "name": "issued_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "세션 발급 시각",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "NnmnpjWMSdYZdpPk2l440",
+          "name": "expired_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "세션 만료 시각",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#e47773",
+      "collapsed": false
+    },
+    {
+      "id": "ZmpNHTtizqiA81myXGzsc",
+      "name": "FRIEND",
+      "x": -1122.0654093126147,
+      "y": 15.487203130090563,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "관계 고유 번호",
+          "id": "5Kf7bT4wjbp58_EIR6L2B",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "Pxm2NimEZXoC-oUAc2Shc",
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "친구를 추가한 유저 번호",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "znnTAIKstmXes-1L3bep-",
+          "name": "friend_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "친구로 추가된 유저 번호",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "_rqCnG6iMHn56z1F3CHUf",
+          "name": "status",
+          "type": "VARCHAR",
+          "default": "ACTIVE",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "ACTIVE, HIDDEN, BLOCKED, FAVORITE",
+          "size": 20
+        },
+        {
+          "id": "8a8-IGGKHtJNUsTcdXZds",
+          "name": "alias",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "내가 지정한 친구 별칭 (PROFILE.nickname과 동일 길이 기준)",
+          "size": 50
+        },
+        {
+          "id": "6lkG7nj-1LghEhJ5RStzm",
+          "name": "target_profile_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": " 이 친구에게만 보여줄 내 전용 프로필. PROFILE.profile_id FK",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "PvfPmJZBbn1pjAM_JLkRL",
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "친구가 된 일자",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [
+        {
+          "id": 0,
+          "name": "FRIEND_unique_0",
+          "fields": [
+            "user_id",
+            "friend_id"
+          ]
+        }
+      ],
+      "color": "#458de6",
+      "collapsed": false
+    },
+    {
+      "id": "_sshUeeUS4OrtWaFMVf9r",
+      "name": "CHAT_ROOM",
+      "x": -575.7355122664658,
+      "y": -521.0159038462212,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "채팅방 고유 번호",
+          "id": "AD58vJtCc9BofB-L_mQiE",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "R8fM6ClTeF6mCyTaqyqAt",
+          "name": "room_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "채팅방 이름",
+          "size": 100
+        },
+        {
+          "id": "tFqfnL4IRFJsqgInoNYVx",
+          "name": "room_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "값 예시: 'DIRECT' (1:1), 'GROUP' (일반 단톡방), 'OPEN_DIRECT' (오픈 1:1), 'OPEN_GROUP' (오픈 그룹방), 'MY' (나와의 채팅)",
+          "size": 20
+        },
+        {
+          "id": "e7qtJiyGP1x5SpSLFgwTD",
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "채팅방 생성 일자",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#4ce675",
+      "collapsed": false
+    },
+    {
+      "id": "oQ0wTsXbY8YO4oxl9k87l",
+      "name": "ROOM_PARTICIPANT",
+      "x": -1039.9095282209767,
+      "y": -450.2380264379086,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "채팅방-유저 매핑 고유 번호",
+          "id": "7vOwElbIOJdRpBraH2OYc",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "xjhQDk4kbKRONzPMWQ7WF",
+          "name": "room_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 채팅방인지",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "XLWF-Zwny4yQ2x0hR-cE7",
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 유저가 참가중인지",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "sV6VmULM6mHxMY-dJCobc",
+          "name": "profile_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "WbECZHLlIVkUTRryS4S4_",
+          "name": "joined_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "채팅방 입장 시간",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "IbMXbGIxC9NrPOQOUk0VZ",
+          "name": "last_read_message_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 메시지까지 읽었는지",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "Q6m9A1SlRZEj8BnET9BBt",
+          "name": "custom_room_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "유저별 커스텀 채팅방 이름 (CHAT_ROOM.room_name과 동일 길이)",
+          "size": 100
+        },
+        {
+          "id": "xDIkyWEKQ9M2CgMNGnazg",
+          "name": "is_muted",
+          "type": "BOOLEAN",
+          "default": "false",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "알림 끄기 여부",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "y8PAPh5ILl3SZnXGCnce9",
+          "name": "is_pinned",
+          "type": "BOOLEAN",
+          "default": "false",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "채팅방 상단 고정 여부",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "U9OfFVElMKdchD3Gi1QGu",
+          "name": "background_image_url",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "유저별 배경 이미지 (PROFILE.profile_image_url과 동일 길이)",
+          "size": 500
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#4ce675",
+      "collapsed": false
+    },
+    {
+      "id": "gssldb6FpUwmhOLpQpXxr",
+      "name": "MESSAGE",
+      "x": 884.2798961562044,
+      "y": -744.1954033898426,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "메시지 고유 번호",
+          "id": "WaO_1fXzxWB3FAmQ5lhdY",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "sKhc-m0KEIyRABzLlor1v",
+          "name": "room_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 채팅방에서 보낸 메시지인지",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "fsFZRBbqcQHaCGnrAmQTR",
+          "name": "sender_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "누가 보낸 메시지인지",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "9-fqg1ow92A5l13dNITbE",
+          "name": "message_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "메시지 종류 (TEXT, IMAGE, FILE, EMOJI, GIFT)",
+          "size": 20
+        },
+        {
+          "id": "IYkVbMZPn4jBzYXxGFfqD",
+          "name": "is_deleted",
+          "type": "BOOLEAN",
+          "default": "false",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "메세지 삭제 상태",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "TzK-ohpv5bv3QRNnVv5MD",
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "메시지 전송 시간",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "UTwQQ2yr7CFpeQJt4gexV",
+          "name": "deleted_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "만약 삭제되었다면, 언제 삭제되었는지",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "uomZykdDhhL5vIYRw9Bho",
+          "name": "parent_message_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "만약 이 메세지가 답장 메세지라면, 어떤 메세지가 원본 메세지인지 (일반 메세지라면 NULL값 대입)",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#4ce675",
+      "collapsed": false
+    },
+    {
+      "id": "ynjIQT03mjFLGBO_Qou0g",
+      "name": "MESSAGE_TEXT_CONTENT",
+      "x": 885.6872231202899,
+      "y": -341.69195337021097,
+      "locked": false,
+      "fields": [
+        {
+          "name": "message_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "메세지 고유 번호",
+          "id": "sHm9ovP6ExNzYqjXD9L6B",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "j2ftjbQGjMHLAYXigEhbA",
+          "name": "content",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "텍스트 내용",
+          "size": 65535
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#4ce675",
+      "collapsed": false
+    },
+    {
+      "id": "eiBII3-A0McrlxNsxEG32",
+      "name": "FILE_METADATA",
+      "x": 1211.1975948686509,
+      "y": -674.9294269374936,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "6yweSJWAFW8qsk4ZZrrKa",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "0O7jQ8OTYPuXKAr5_xThB",
+          "name": "message_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 채팅에 첨부된 파일인지",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "EnqDhChN36iHNRmKK81hg",
+          "name": "file_url",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": " AWS S3에 저장된 실제 파일 다운로드 주소",
+          "size": 255
+        },
+        {
+          "id": "rCmIITAbkbs-px_sE1vYP",
+          "name": "original_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "사용자가 올린 실제 파일명",
+          "size": 255
+        },
+        {
+          "id": "KSUXCfLXsXNWK1NWm3uRn",
+          "name": "file_size",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "파일 용량",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#4ce675",
+      "collapsed": false
+    },
+    {
+      "id": "9HdNvP3i62ZQ-VdIcAKvL",
+      "name": "MESSAGE_LOG",
+      "x": 1232.2041163332603,
+      "y": -384.83412420865045,
+      "locked": false,
+      "fields": [
+        {
+          "name": "log_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "로그 아이디",
+          "id": "kpd55V7Dwt8KdMUP8E7Xj",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "xlgUw9gZ9t4MArkejfHOG",
+          "name": "message_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "IQxgz67EZaWP0lWalib4M",
+          "name": "room_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "InKeMYrsgWZYiRZixea2U",
+          "name": "sender_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "udRJpKK2TcqpiM8g8pTUO",
+          "name": "action_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "'CREATE', 'UPDATE', 'DELETE' 등 어떤 행동이었는지 기록",
+          "size": 255
+        },
+        {
+          "id": "D9mujLDAkzNJAB8_e3bnP",
+          "name": "raw_content",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 65535
+        },
+        {
+          "id": "FoOR6WIX5fj9ZPOyYjeTH",
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "로그 기록 시각",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#4ce675",
+      "collapsed": false
+    },
+    {
+      "id": "gYuDJZlKgs756dpRJZfDw",
+      "name": "EMOJI",
+      "x": -29.334504579722704,
+      "y": 351.31008643293296,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "이모티콘 고유 번호",
+          "id": "Y3f0AU0sOIaaRzo6bLPt1",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "GgnsG3coq81GvRjeBw5IK",
+          "name": "image_url",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "이코티콘 이미지 파일 경로",
+          "size": 255
+        },
+        {
+          "id": "eYJ3LA2UwmP1Gjd9_im02",
+          "name": "category",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "이모티콘 카테코리 명",
+          "size": 100
+        },
+        {
+          "id": "U7XoGZ6JmzNInYY_imIn8",
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "등록 일자",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#f5c731",
+      "collapsed": false,
+      "hidden": false
+    },
+    {
+      "id": "krrYFE_hNmLeYIy4S5Lqh",
+      "name": "EMOJI_METADATA",
+      "x": 813.4595943395669,
+      "y": 432.94117742286676,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "메타데이터 고유 번호",
+          "id": "VXa8rwY-XFfCBP7VHTfl_",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "2K3QFgVmDmnYrztov_WPw",
+          "name": "message_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 채팅 메시지에 쓰인 이모티콘인지",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "XCEvatwoe_YNddDDJJr0l",
+          "name": "emoji_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 이모티콘을 사용했는가",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#f5c731",
+      "collapsed": false
+    },
+    {
+      "id": "90fuLJ4Y48C3FXY4xoKqL",
+      "name": "USER_EMOJI",
+      "x": -387.0845051258564,
+      "y": -5.720762402683931,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "이모티콘 보유 로깅 고유 번호",
+          "id": "Btdaehed9dvo0-6SqptaN",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "aNb36AR-5jZFjnq3ytWxs",
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 유저가 보유하고 있는지",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "EsQ-obwU6PVpg2XcmFJ_S",
+          "name": "emoji_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 이모티콘을 보유하고 있는지",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#f5c731",
+      "collapsed": false
+    },
+    {
+      "id": "uYckigvCXrVzE9tJSL3RN",
+      "name": "USER_SUBSCRIPTION",
+      "x": 250.8052803168224,
+      "y": 137.59385925223773,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "em9WLrOg9SMN3z6bHeWE_",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "T_bIZTd4a_VtJ5TRmpdPF",
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "1유저당 1구독 레코드",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "NPp5X3HS6e5SBccq3vkJH",
+          "name": "is_emoticon_plus_active",
+          "type": "BOOLEAN",
+          "default": "false",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "이모티콘 플러스 활성 여부",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "IFBtwTCxczAIJjH6I5F00",
+          "name": "expired_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "구독 만료 일시",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#f5c731",
+      "collapsed": false
+    },
+    {
+      "id": "VRzJaMUtR7tHU9h2lUHKs",
+      "name": "DEVICE_TOKEN",
+      "x": 490.6403591128193,
+      "y": -3.162927770551164,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "mawhXkgCm9Czs3G3-m4op",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "RtMXbHGEYqNAU8Rpp1MTq",
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "TAUSuCvq5suxrTY3mzSTc",
+          "name": "device_token",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 255
+        },
+        {
+          "id": "heGC_4BLPsF1IOgAHx4RZ",
+          "name": "device_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "(iOS, ANDROID)",
+          "size": 20
+        },
+        {
+          "id": "hzrHz7slklFj0yUppGJwR",
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#843ddb",
+      "collapsed": false
+    },
+    {
+      "id": "inOyUXcAjNNnwyBcLpttw",
+      "name": "NOTIFICATION_SETTING",
+      "x": 491.8258702739197,
+      "y": -327.68725719800307,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "x9wlXd9f0tYl2-zrONLuU",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "SnU_njVXMZkhQbajf3r1F",
+          "name": "user_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "275QrwvyWYWKJK8CLZPTH",
+          "name": "is_enabled",
+          "type": "BOOLEAN",
+          "default": "true",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "qsBcWn4p5zvdCK7vU4BOa",
+          "name": "is_sound",
+          "type": "BOOLEAN",
+          "default": "true",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "o6ggITq50aUUewpznQUAY",
+          "name": "quiet_start_time",
+          "type": "TIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "1JdK5nK0im0zmjAnIkaaJ",
+          "name": "quiet_end_time",
+          "type": "TIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#843ddb",
+      "collapsed": false
+    },
+    {
+      "id": "Lw2ZJsfiVPjtQLj3PdsMY",
+      "name": "CALL_LOG",
+      "x": 112.19805826455456,
+      "y": -1017.3991875191831,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "8otNYIPV2qEB6TZ0SwFr5",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "kOq2zHAM148Hw9nT9Q8rU",
+          "name": "room_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "iQu9o_CtKNfKHuLjHJIDa",
+          "name": "caller_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "발신자",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "-hga-QtNps1gppEVjCbDe",
+          "name": "receiver_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "수신자",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "BCXDvaXHphS4bKDBBPKwa",
+          "name": "call_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "(VOICE, FACE)",
+          "size": 20
+        },
+        {
+          "id": "1pgpabQhDMPdCxtVHbKmn",
+          "name": "call_status",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "(CONNECTED, REJECTED, MISSED, BUSY)",
+          "size": 20
+        },
+        {
+          "id": "D7pBWWVeSZuVtfjCS12pD",
+          "name": "duration_seconds",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "(통화 시간(초), 미연결 시 0)",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "K7m3Xet9TyvAaD39rhEEa",
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#4771cc",
+      "collapsed": false
+    },
+    {
+      "id": "_xAL-aenaHMxzG0oTa8Y_",
+      "name": "GIFT_PRODUCT",
+      "x": -917.4834810052143,
+      "y": -917.6428239494622,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "6kPo5R0GZq8qPYWe6sjgO",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "TBLh6FvwhDS0DrBHmywZy",
+          "name": "product_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "Bh0JcsE693LQHcO-iUzul",
+          "name": "brand_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        },
+        {
+          "id": "4dJxThBop2toFJwr35eBg",
+          "name": "price",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        },
+        {
+          "id": "zthUdiQ0ckECOQ5ZLPICf",
+          "name": "image_url",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 255
+        },
+        {
+          "id": "JtPXj-fG8pPhbt41lAlin",
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#e02459",
+      "collapsed": false
+    },
+    {
+      "id": "apnsg7gjbxzHHjCDtu5VS",
+      "name": "GIFT_ORDER",
+      "x": -544.8748974357776,
+      "y": -960.7389678534116,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "EXzc0eH3L_e_chblukI4S",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "F9jjRqTXXEBN3yRnKU8h3",
+          "name": "sender_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "선물 보낸 사람",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "a0es1a4VjPGGhlsICOjwk",
+          "name": "receiver_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "선물 받는 사람",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "jdqmgeUpGY-ZStCl0imU3",
+          "name": "product_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "3lxuatCNvUdWsjm6bpR6N",
+          "name": "order_status",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "(SUCCESS, CANCELLED, REFUNDED)",
+          "size": 20
+        },
+        {
+          "id": "eHbogFHjbOlUFeuPEaXVa",
+          "name": "created_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#e02459",
+      "collapsed": false
+    },
+    {
+      "id": "jpJfqct2gohEmuWRAZeK9",
+      "name": "VOUCHER",
+      "x": -879.2216003238566,
+      "y": -1286.8943558822957,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "YnBzZtQ8SGzCTNt5W33Dw",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VVscXgLaXW5vlG0ft5LSL",
+          "name": "order_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "dpcx28SpbNPn56SfzavVT",
+          "name": "voucher_code",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 100
+        },
+        {
+          "id": "qwA9gwyLidY8sg2rHMxTg",
+          "name": "voucher_status",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "(UNUSED, USED, EXPIRED)",
+          "size": 20
+        },
+        {
+          "id": "bj07H7Ti60E2Mnc01ptTc",
+          "name": "valid_until",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "유효기간",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "B0IonduX_Zp_kYG-su_2E",
+          "name": "used_at",
+          "type": "DATETIME",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#e02459",
+      "collapsed": false
+    },
+    {
+      "id": "2p3qxFcgM6PPEw3YS7zJP",
+      "name": "GIFT_METADATA",
+      "x": -282.02771260148893,
+      "y": -1178.3036986655677,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": true,
+          "notNull": true,
+          "increment": true,
+          "comment": "메타데이터 고유 번호",
+          "id": "UnR_84brHzv1XZD8xdbC5",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "yOazbN2i_hc2hwvyPYJT7",
+          "name": "message_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 메시지에 연결된 선물인지",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        },
+        {
+          "id": "liQzmbECZN8upsFC3fID0",
+          "name": "voucher_id",
+          "type": "BIGINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "어떤 교환권이 전달됐는지",
+          "size": "",
+          "values": [],
+          "unsigned": true
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#e02459",
+      "collapsed": false
+    }
+  ],
+  "relationships": [
+    {
+      "startTableId": "ZmpNHTtizqiA81myXGzsc",
+      "startFieldId": "Pxm2NimEZXoC-oUAc2Shc",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "Pxm2NimEZXoC-oUAc2Shc",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_FRIEND_user_id_USER",
+      "id": "fzFDpPQfBlECSquwWCfWX"
+    },
+    {
+      "startTableId": "ZmpNHTtizqiA81myXGzsc",
+      "startFieldId": "znnTAIKstmXes-1L3bep-",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "znnTAIKstmXes-1L3bep-",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_FRIEND_friend_id_USER",
+      "id": "0yj2ZytgU4tehH6BV4_e5"
+    },
+    {
+      "startTableId": "oQ0wTsXbY8YO4oxl9k87l",
+      "startFieldId": "xjhQDk4kbKRONzPMWQ7WF",
+      "endTableId": "_sshUeeUS4OrtWaFMVf9r",
+      "endFieldId": "AD58vJtCc9BofB-L_mQiE",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "xjhQDk4kbKRONzPMWQ7WF",
+          "endFieldId": "AD58vJtCc9BofB-L_mQiE"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_ROOM_PARTICIPANT_room_id_CHAT_ROOM",
+      "id": "m8iUKXtZWcwt0FIH97U8G"
+    },
+    {
+      "startTableId": "gssldb6FpUwmhOLpQpXxr",
+      "startFieldId": "sKhc-m0KEIyRABzLlor1v",
+      "endTableId": "_sshUeeUS4OrtWaFMVf9r",
+      "endFieldId": "AD58vJtCc9BofB-L_mQiE",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "sKhc-m0KEIyRABzLlor1v",
+          "endFieldId": "AD58vJtCc9BofB-L_mQiE"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_MESSAGE_room_id_CHAT_ROOM",
+      "id": "o4IPpa8womvEXQqQnBkcm"
+    },
+    {
+      "startTableId": "eiBII3-A0McrlxNsxEG32",
+      "startFieldId": "0O7jQ8OTYPuXKAr5_xThB",
+      "endTableId": "gssldb6FpUwmhOLpQpXxr",
+      "endFieldId": "WaO_1fXzxWB3FAmQ5lhdY",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "0O7jQ8OTYPuXKAr5_xThB",
+          "endFieldId": "WaO_1fXzxWB3FAmQ5lhdY"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_FILE_METADATA_message_id_MESSAGE",
+      "id": "SUTQVEMEsOOgR2rZrdnMA"
+    },
+    {
+      "startTableId": "krrYFE_hNmLeYIy4S5Lqh",
+      "startFieldId": "2K3QFgVmDmnYrztov_WPw",
+      "endTableId": "gssldb6FpUwmhOLpQpXxr",
+      "endFieldId": "WaO_1fXzxWB3FAmQ5lhdY",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "2K3QFgVmDmnYrztov_WPw",
+          "endFieldId": "WaO_1fXzxWB3FAmQ5lhdY"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_table_krrYFE_hNmLeYIy4S5Lqh_message_id_MESSAGE",
+      "id": "rdHAYr8HwfG2O9r7FEDe-"
+    },
+    {
+      "startTableId": "krrYFE_hNmLeYIy4S5Lqh",
+      "startFieldId": "XCEvatwoe_YNddDDJJr0l",
+      "endTableId": "gYuDJZlKgs756dpRJZfDw",
+      "endFieldId": "Y3f0AU0sOIaaRzo6bLPt1",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "XCEvatwoe_YNddDDJJr0l",
+          "endFieldId": "Y3f0AU0sOIaaRzo6bLPt1"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_table_krrYFE_hNmLeYIy4S5Lqh_emoji_id_EMOJI",
+      "id": "XqxF9Hw0SnQb_pp3MVt9m"
+    },
+    {
+      "startTableId": "90fuLJ4Y48C3FXY4xoKqL",
+      "startFieldId": "aNb36AR-5jZFjnq3ytWxs",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "aNb36AR-5jZFjnq3ytWxs",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_USER_EMOJI_user_id_USER",
+      "id": "jd4C9fW4EDarQmTBkrBAk"
+    },
+    {
+      "startTableId": "90fuLJ4Y48C3FXY4xoKqL",
+      "startFieldId": "EsQ-obwU6PVpg2XcmFJ_S",
+      "endTableId": "gYuDJZlKgs756dpRJZfDw",
+      "endFieldId": "Y3f0AU0sOIaaRzo6bLPt1",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "EsQ-obwU6PVpg2XcmFJ_S",
+          "endFieldId": "Y3f0AU0sOIaaRzo6bLPt1"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_USER_EMOJI_emoji_id_EMOJI",
+      "id": "EgNeJlXI5ahZoB_Tzymsw"
+    },
+    {
+      "startTableId": "ynjIQT03mjFLGBO_Qou0g",
+      "startFieldId": "sHm9ovP6ExNzYqjXD9L6B",
+      "endTableId": "gssldb6FpUwmhOLpQpXxr",
+      "endFieldId": "WaO_1fXzxWB3FAmQ5lhdY",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "sHm9ovP6ExNzYqjXD9L6B",
+          "endFieldId": "WaO_1fXzxWB3FAmQ5lhdY"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_MESSAGE_TEXT_CONTENT_message_id_MESSAGE",
+      "id": "nsMYp84fKCiMJYHz0EhCA"
+    },
+    {
+      "startTableId": "svU0AA38ooQEjLdxdKCJL",
+      "startFieldId": "WymQ9_Ik4FeS0-d4HVqZT",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "one_to_many",
+      "fields": [
+        {
+          "startFieldId": "WymQ9_Ik4FeS0-d4HVqZT",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_PROFILE_user_id_USER",
+      "id": "zI_ImKwou_0WcqLulkjUk"
+    },
+    {
+      "startTableId": "gssldb6FpUwmhOLpQpXxr",
+      "startFieldId": "fsFZRBbqcQHaCGnrAmQTR",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "one_to_many",
+      "fields": [
+        {
+          "startFieldId": "fsFZRBbqcQHaCGnrAmQTR",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_MESSAGE_sender_id_USER",
+      "id": "re_WXfizF-Kib0oCrTp1h"
+    },
+    {
+      "startTableId": "oQ0wTsXbY8YO4oxl9k87l",
+      "startFieldId": "XLWF-Zwny4yQ2x0hR-cE7",
+      "endTableId": "svU0AA38ooQEjLdxdKCJL",
+      "endFieldId": "WymQ9_Ik4FeS0-d4HVqZT",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "XLWF-Zwny4yQ2x0hR-cE7",
+          "endFieldId": "WymQ9_Ik4FeS0-d4HVqZT"
+        },
+        {
+          "startFieldId": "sV6VmULM6mHxMY-dJCobc",
+          "endFieldId": "BentlUkqXixmUx8A31CH3"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_ROOM_PARTICIPANT_user_id_PROFILE",
+      "id": "z3wl1uuzWZ8xx_EE3zNv_"
+    },
+    {
+      "startTableId": "VRzJaMUtR7tHU9h2lUHKs",
+      "startFieldId": "RtMXbHGEYqNAU8Rpp1MTq",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "RtMXbHGEYqNAU8Rpp1MTq",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_DEVICE_TOKEN_user_id_USER",
+      "id": "NpwVzQ_-SnXZyVxMkgPcO"
+    },
+    {
+      "startTableId": "inOyUXcAjNNnwyBcLpttw",
+      "startFieldId": "SnU_njVXMZkhQbajf3r1F",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "SnU_njVXMZkhQbajf3r1F",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_NOTIFICATION_SETTING_user_id_USER",
+      "id": "6mgmmWQscCJKWZQEpPLRc"
+    },
+    {
+      "startTableId": "Lw2ZJsfiVPjtQLj3PdsMY",
+      "startFieldId": "kOq2zHAM148Hw9nT9Q8rU",
+      "endTableId": "_sshUeeUS4OrtWaFMVf9r",
+      "endFieldId": "AD58vJtCc9BofB-L_mQiE",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "kOq2zHAM148Hw9nT9Q8rU",
+          "endFieldId": "AD58vJtCc9BofB-L_mQiE"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_CALL_LOG_room_id_CHAT_ROOM",
+      "id": "jVBhFMlHLl04j4j5SlUDX"
+    },
+    {
+      "startTableId": "apnsg7gjbxzHHjCDtu5VS",
+      "startFieldId": "F9jjRqTXXEBN3yRnKU8h3",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "F9jjRqTXXEBN3yRnKU8h3",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_GIFT_ORDER_sender_id_USER",
+      "id": "rZnQTIjATYVzFXtxdL1IB"
+    },
+    {
+      "startTableId": "apnsg7gjbxzHHjCDtu5VS",
+      "startFieldId": "a0es1a4VjPGGhlsICOjwk",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "a0es1a4VjPGGhlsICOjwk",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_GIFT_ORDER_receiver_id_USER",
+      "id": "yaVTCxNaNL3bpCr2Y6QDo"
+    },
+    {
+      "startTableId": "apnsg7gjbxzHHjCDtu5VS",
+      "startFieldId": "jdqmgeUpGY-ZStCl0imU3",
+      "endTableId": "_xAL-aenaHMxzG0oTa8Y_",
+      "endFieldId": "6kPo5R0GZq8qPYWe6sjgO",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "jdqmgeUpGY-ZStCl0imU3",
+          "endFieldId": "6kPo5R0GZq8qPYWe6sjgO"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_GIFT_ORDER_product_id_GIFT_PRODUCT",
+      "id": "WsRA6beE2ZF1mZzZ5w4bO"
+    },
+    {
+      "startTableId": "jpJfqct2gohEmuWRAZeK9",
+      "startFieldId": "VVscXgLaXW5vlG0ft5LSL",
+      "endTableId": "apnsg7gjbxzHHjCDtu5VS",
+      "endFieldId": "EXzc0eH3L_e_chblukI4S",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "VVscXgLaXW5vlG0ft5LSL",
+          "endFieldId": "EXzc0eH3L_e_chblukI4S"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_VOUCHER_order_id_GIFT_ORDER",
+      "id": "c646cw7HFsbO9SQc6aZch"
+    },
+    {
+      "startTableId": "Lw2ZJsfiVPjtQLj3PdsMY",
+      "startFieldId": "iQu9o_CtKNfKHuLjHJIDa",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "iQu9o_CtKNfKHuLjHJIDa",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_CALL_LOG_caller_id_USER",
+      "id": "pGNoci5uGfm4LsFaQiw_h"
+    },
+    {
+      "startTableId": "Lw2ZJsfiVPjtQLj3PdsMY",
+      "startFieldId": "-hga-QtNps1gppEVjCbDe",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "-hga-QtNps1gppEVjCbDe",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_CALL_LOG_receiver_id_USER",
+      "id": "Le69qSTiWIcs8BUQNIGnE"
+    },
+    {
+      "startTableId": "0Sdi_WTzLaYX894kpF9WW",
+      "startFieldId": "IqVZI78E-yhEhRiT-b_7j",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "IqVZI78E-yhEhRiT-b_7j",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_AUTH_SESSION_user_id_USER",
+      "id": "Mu2Zr80wPcuLm27HZW_N4"
+    },
+    {
+      "startTableId": "ZmpNHTtizqiA81myXGzsc",
+      "startFieldId": "6lkG7nj-1LghEhJ5RStzm",
+      "endTableId": "svU0AA38ooQEjLdxdKCJL",
+      "endFieldId": "BentlUkqXixmUx8A31CH3",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "6lkG7nj-1LghEhJ5RStzm",
+          "endFieldId": "BentlUkqXixmUx8A31CH3"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_FRIEND_target_profile_id_PROFILE",
+      "id": "11seQk5Ndq3q6IF-lclE5"
+    },
+    {
+      "startTableId": "2p3qxFcgM6PPEw3YS7zJP",
+      "startFieldId": "liQzmbECZN8upsFC3fID0",
+      "endTableId": "jpJfqct2gohEmuWRAZeK9",
+      "endFieldId": "YnBzZtQ8SGzCTNt5W33Dw",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "liQzmbECZN8upsFC3fID0",
+          "endFieldId": "YnBzZtQ8SGzCTNt5W33Dw"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_GIFT_METADATA_voucher_id_VOUCHER",
+      "id": "poVemXCUuCW39xyys_YZG"
+    },
+    {
+      "startTableId": "2p3qxFcgM6PPEw3YS7zJP",
+      "startFieldId": "yOazbN2i_hc2hwvyPYJT7",
+      "endTableId": "gssldb6FpUwmhOLpQpXxr",
+      "endFieldId": "WaO_1fXzxWB3FAmQ5lhdY",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "yOazbN2i_hc2hwvyPYJT7",
+          "endFieldId": "WaO_1fXzxWB3FAmQ5lhdY"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_GIFT_METADATA_message_id_MESSAGE",
+      "id": "Ns5SH75M33WO6f5bTnTwg"
+    },
+    {
+      "startTableId": "uYckigvCXrVzE9tJSL3RN",
+      "startFieldId": "T_bIZTd4a_VtJ5TRmpdPF",
+      "endTableId": "bbfo-rxrm1SrBpY7PkEpr",
+      "endFieldId": "WOtXgFHDEaSoZLbO0Dggh",
+      "cardinality": "one_to_one",
+      "fields": [
+        {
+          "startFieldId": "T_bIZTd4a_VtJ5TRmpdPF",
+          "endFieldId": "WOtXgFHDEaSoZLbO0Dggh"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_USER_SUBSCRIPTION_user_id_USER",
+      "id": "jQ9vrr3rx1xR49sX9U8ru"
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "database": "mysql",
+  "title": "realtime-chat-service"
+}
