@@ -44,3 +44,6 @@ out/
 
 # Local-only secrets (DB credentials, etc.)
 application-local.properties
+
+# Personal study notes (not for upload)
+docs/history/
