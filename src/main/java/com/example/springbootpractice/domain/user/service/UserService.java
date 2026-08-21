@@ -5,6 +5,7 @@ import com.example.springbootpractice.domain.user.repository.UserRepository;
 import com.example.springbootpractice.global.exception.BusinessException;
 import com.example.springbootpractice.global.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public User register(String email, String password, String phoneNumber) {
@@ -24,7 +26,8 @@ public class UserService {
             throw new BusinessException(ErrorCode.DUPLICATE_PHONE_NUMBER);
         }
 
-        User user = User.create(email, password, phoneNumber);
+        String encodedPassword = passwordEncoder.encode(password);
+        User user = User.create(email, encodedPassword, phoneNumber);
         return userRepository.save(user);
     }
 

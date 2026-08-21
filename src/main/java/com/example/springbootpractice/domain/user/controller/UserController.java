@@ -7,6 +7,7 @@ import com.example.springbootpractice.domain.user.service.UserService;
 import com.example.springbootpractice.global.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,12 @@ public class UserController {
     @GetMapping("/{id}")
     public ApiResponse<UserResponse> findById(@PathVariable Long id) {
         User user = userService.findById(id);
+        return ApiResponse.success(UserResponse.from(user));
+    }
+
+    @GetMapping("/me")
+    public ApiResponse<UserResponse> me(@AuthenticationPrincipal Long userId) {
+        User user = userService.findById(userId);
         return ApiResponse.success(UserResponse.from(user));
     }
 }
