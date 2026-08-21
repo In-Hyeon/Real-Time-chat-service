@@ -55,4 +55,12 @@ public class Friend {
         relation.createdAt = LocalDateTime.now();
         return relation;
     }
+
+    public void updateStatus(String status) {
+        this.status = status;
+    }
+
+    public void updateAlias(String alias) {
+        this.alias = alias;
+    }
 }
