@@ -68,4 +68,19 @@ public class RoomParticipant {
         participant.joinedAt = LocalDateTime.now();
         return participant;
     }
+
+    public void updateSettings(String customRoomName, Boolean isMuted, Boolean isPinned, String backgroundImageUrl) {
+        if (customRoomName != null) {
+            this.customRoomName = customRoomName;
+        }
+        if (isMuted != null) {
+            this.isMuted = isMuted;
+        }
+        if (isPinned != null) {
+            this.isPinned = isPinned;
+        }
+        if (backgroundImageUrl != null) {
+            this.backgroundImageUrl = backgroundImageUrl;
+        }
+    }
 }

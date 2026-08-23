@@ -14,7 +14,9 @@ public enum ErrorCode {
     CANNOT_FRIEND_SELF(HttpStatus.BAD_REQUEST, "자기 자신은 친구로 추가할 수 없습니다."),
     ALREADY_FRIEND(HttpStatus.CONFLICT, "이미 친구로 추가된 사용자입니다."),
     FRIEND_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 친구 관계입니다."),
-    INVALID_FRIEND_STATUS(HttpStatus.BAD_REQUEST, "허용되지 않는 친구 상태 값입니다.");
+    INVALID_FRIEND_STATUS(HttpStatus.BAD_REQUEST, "허용되지 않는 친구 상태 값입니다."),
+    INVALID_ROOM_TYPE(HttpStatus.BAD_REQUEST, "허용되지 않는 채팅방 타입입니다."),
+    ROOM_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않거나 참여하지 않은 채팅방입니다.");
 
     private final HttpStatus status;
     private final String message;
