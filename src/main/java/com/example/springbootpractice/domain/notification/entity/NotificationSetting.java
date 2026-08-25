@@ -47,4 +47,19 @@ public class NotificationSetting {
         setting.user = user;
         return setting;
     }
+
+    public void updateSettings(Boolean isEnabled, Boolean isSound, LocalTime quietStartTime, LocalTime quietEndTime) {
+        if (isEnabled != null) {
+            this.isEnabled = isEnabled;
+        }
+        if (isSound != null) {
+            this.isSound = isSound;
+        }
+        if (quietStartTime != null) {
+            this.quietStartTime = quietStartTime;
+        }
+        if (quietEndTime != null) {
+            this.quietEndTime = quietEndTime;
+        }
+    }
 }

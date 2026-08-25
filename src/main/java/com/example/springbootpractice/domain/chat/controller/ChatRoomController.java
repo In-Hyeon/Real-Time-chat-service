@@ -4,6 +4,7 @@ import com.example.springbootpractice.domain.chat.dto.ChatRoomCreateRequest;
 import com.example.springbootpractice.domain.chat.dto.ChatRoomDetailResponse;
 import com.example.springbootpractice.domain.chat.dto.ChatRoomResponse;
 import com.example.springbootpractice.domain.chat.dto.ChatRoomSettingsUpdateRequest;
+import com.example.springbootpractice.domain.chat.dto.MarkAsReadRequest;
 import com.example.springbootpractice.domain.chat.entity.RoomParticipant;
 import com.example.springbootpractice.domain.chat.service.ChatRoomService;
 import com.example.springbootpractice.global.response.ApiResponse;
@@ -34,13 +35,13 @@ public class ChatRoomController {
                                                  @RequestBody ChatRoomCreateRequest request) {
         RoomParticipant myParticipant = chatRoomService.create(userId, request.roomName(), request.roomType(),
                 request.myProfileId(), request.otherProfileIds());
-        return ApiResponse.success(ChatRoomResponse.of(myParticipant));
+        return ApiResponse.success(ChatRoomResponse.of(myParticipant, 0L));
     }
 
     @GetMapping
     public ApiResponse<List<ChatRoomResponse>> findMyRooms(@AuthenticationPrincipal Long userId) {
         List<ChatRoomResponse> rooms = chatRoomService.findMyRooms(userId).stream()
-                .map(ChatRoomResponse::of)
+                .map(p -> ChatRoomResponse.of(p, chatRoomService.countUnread(p)))
                 .toList();
         return ApiResponse.success(rooms);
     }
@@ -58,12 +59,19 @@ public class ChatRoomController {
                                                          @RequestBody ChatRoomSettingsUpdateRequest request) {
         RoomParticipant participant = chatRoomService.updateMySettings(userId, roomId, request.customRoomName(),
                 request.isMuted(), request.isPinned(), request.backgroundImageUrl());
-        return ApiResponse.success(ChatRoomResponse.of(participant));
+        return ApiResponse.success(ChatRoomResponse.of(participant, chatRoomService.countUnread(participant)));
     }
 
     @DeleteMapping("/{roomId}/leave")
     public ApiResponse<Void> leave(@AuthenticationPrincipal Long userId, @PathVariable Long roomId) {
         chatRoomService.leave(userId, roomId);
+        return ApiResponse.success(null);
+    }
+
+    @PatchMapping("/{roomId}/read")
+    public ApiResponse<Void> markAsRead(@AuthenticationPrincipal Long userId, @PathVariable Long roomId,
+                                         @RequestBody MarkAsReadRequest request) {
+        chatRoomService.markAsRead(userId, roomId, request.lastReadMessageId());
         return ApiResponse.success(null);
     }
 }

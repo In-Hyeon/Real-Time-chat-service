@@ -48,4 +48,13 @@ public class Voucher {
         voucher.validUntil = validUntil;
         return voucher;
     }
+
+    public boolean isUsable() {
+        return "UNUSED".equals(voucherStatus) && (validUntil == null || validUntil.isAfter(LocalDateTime.now()));
+    }
+
+    public void use() {
+        this.voucherStatus = "USED";
+        this.usedAt = LocalDateTime.now();
+    }
 }

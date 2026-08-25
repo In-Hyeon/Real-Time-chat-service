@@ -10,9 +10,10 @@ public record ChatRoomResponse(
         String myCustomRoomName,
         boolean isMuted,
         boolean isPinned,
-        String backgroundImageUrl
+        String backgroundImageUrl,
+        long unreadCount
 ) {
-    public static ChatRoomResponse of(RoomParticipant participant) {
+    public static ChatRoomResponse of(RoomParticipant participant, long unreadCount) {
         ChatRoom room = participant.getRoom();
         return new ChatRoomResponse(
                 room.getId(),
@@ -21,7 +22,8 @@ public record ChatRoomResponse(
                 participant.getCustomRoomName(),
                 participant.isMuted(),
                 participant.isPinned(),
-                participant.getBackgroundImageUrl()
+                participant.getBackgroundImageUrl(),
+                unreadCount
         );
     }
 }

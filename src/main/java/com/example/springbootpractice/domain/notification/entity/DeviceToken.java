@@ -47,4 +47,8 @@ public class DeviceToken {
         token.updatedAt = LocalDateTime.now();
         return token;
     }
+
+    public void touch() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }

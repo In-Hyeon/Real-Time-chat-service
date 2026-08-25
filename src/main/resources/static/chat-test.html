@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>WebSocket 채팅 테스트</title>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+<style>
+  body { font-family: sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; }
+  label { display: block; margin-top: 10px; font-size: 13px; color: #555; }
+  input { width: 100%; padding: 6px; box-sizing: border-box; }
+  button { margin-top: 10px; padding: 8px 16px; }
+  #log { border: 1px solid #ccc; height: 260px; overflow-y: auto; padding: 8px; margin-top: 16px; background: #fafafa; }
+  #log div { margin-bottom: 4px; font-size: 13px; }
+  #status { font-weight: bold; }
+</style>
+</head>
+<body>
+  <h2>WebSocket 채팅 테스트 (탭 2개로 열어서 확인)</h2>
+  <p>상태: <span id="status">연결 안 됨</span></p>
+
+  <label>Access Token (로그인 응답의 accessToken)</label>
+  <input id="token" type="text" placeholder="eyJhbGciOi...">
+
+  <label>Room ID</label>
+  <input id="roomId" type="text" placeholder="예: 25">
+
+  <button id="connectBtn">연결 + 구독</button>
+
+  <label>보낼 메시지</label>
+  <input id="content" type="text" placeholder="안녕하세요">
+  <button id="sendBtn" disabled>전송</button>
+
+  <div id="log"></div>
+
+<script>
+  let client = null;
+
+  function log(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    document.getElementById('log').prepend(div);
+  }
+
+  document.getElementById('connectBtn').onclick = () => {
+    const token = document.getElementById('token').value.trim();
+    const roomId = document.getElementById('roomId').value.trim();
+    if (!token || !roomId) {
+      alert('토큰과 roomId를 입력하세요');
+      return;
+    }
+
+    client = new StompJs.Client({
+      brokerURL: 'ws://' + location.host + '/ws',
+      connectHeaders: { Authorization: 'Bearer ' + token },
+      onConnect: () => {
+        document.getElementById('status').textContent = '연결됨';
+        document.getElementById('sendBtn').disabled = false;
+        log('[연결 성공]');
+
+        client.subscribe('/topic/rooms/' + roomId, (message) => {
+          const body = JSON.parse(message.body);
+          log('[수신] ' + body.senderId + ': ' + (body.content ?? '(파일/삭제됨)'));
+        });
+
+        client.subscribe('/user/queue/errors', (message) => {
+          log('[에러] ' + message.body);
+        });
+      },
+      onStompError: (frame) => {
+        document.getElementById('status').textContent = '에러';
+        log('[STOMP 에러] ' + frame.headers['message']);
+      },
+      onWebSocketClose: () => {
+        document.getElementById('status').textContent = '연결 끊김';
+        document.getElementById('sendBtn').disabled = true;
+      }
+    });
+
+    client.activate();
+  };
+
+  document.getElementById('sendBtn').onclick = () => {
+    const roomId = document.getElementById('roomId').value.trim();
+    const content = document.getElementById('content').value.trim();
+    if (!content) return;
+
+    client.publish({
+      destination: '/app/rooms/' + roomId + '/messages',
+      body: JSON.stringify({ messageType: 'TEXT', content: content })
+    });
+    document.getElementById('content').value = '';
+  };
+</script>
+</body>
+</html>

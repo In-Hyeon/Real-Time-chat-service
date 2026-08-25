@@ -69,6 +69,10 @@ public class RoomParticipant {
         return participant;
     }
 
+    public void updateLastReadMessageId(Long lastReadMessageId) {
+        this.lastReadMessageId = lastReadMessageId;
+    }
+
     public void updateSettings(String customRoomName, Boolean isMuted, Boolean isPinned, String backgroundImageUrl) {
         if (customRoomName != null) {
             this.customRoomName = customRoomName;

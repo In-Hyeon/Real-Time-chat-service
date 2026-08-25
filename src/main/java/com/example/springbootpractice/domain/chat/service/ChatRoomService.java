@@ -3,6 +3,7 @@ package com.example.springbootpractice.domain.chat.service;
 import com.example.springbootpractice.domain.chat.entity.ChatRoom;
 import com.example.springbootpractice.domain.chat.entity.RoomParticipant;
 import com.example.springbootpractice.domain.chat.repository.ChatRoomRepository;
+import com.example.springbootpractice.domain.chat.repository.MessageRepository;
 import com.example.springbootpractice.domain.chat.repository.RoomParticipantRepository;
 import com.example.springbootpractice.domain.user.entity.Profile;
 import com.example.springbootpractice.domain.user.repository.ProfileRepository;
@@ -25,6 +26,7 @@ public class ChatRoomService {
 
     private final ChatRoomRepository chatRoomRepository;
     private final RoomParticipantRepository roomParticipantRepository;
+    private final MessageRepository messageRepository;
     private final ProfileRepository profileRepository;
 
     @Transactional
@@ -83,5 +85,18 @@ public class ChatRoomService {
                 .orElseThrow(() -> new BusinessException(ErrorCode.ROOM_NOT_FOUND));
 
         roomParticipantRepository.delete(participant);
+    }
+
+    @Transactional
+    public void markAsRead(Long userId, Long roomId, Long lastReadMessageId) {
+        RoomParticipant participant = roomParticipantRepository.findByRoomIdAndProfileUserId(roomId, userId)
+                .orElseThrow(() -> new BusinessException(ErrorCode.ROOM_NOT_FOUND));
+
+        participant.updateLastReadMessageId(lastReadMessageId);
+    }
+
+    public long countUnread(RoomParticipant participant) {
+        return messageRepository.countByRoomIdAndIdGreaterThan(
+                participant.getRoom().getId(), participant.getLastReadMessageId());
     }
 }

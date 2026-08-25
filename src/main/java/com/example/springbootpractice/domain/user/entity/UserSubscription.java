@@ -40,4 +40,17 @@ public class UserSubscription {
         subscription.user = user;
         return subscription;
     }
+
+    public void activate(LocalDateTime expiredAt) {
+        this.isEmoticonPlusActive = true;
+        this.expiredAt = expiredAt;
+    }
+
+    public void deactivate() {
+        this.isEmoticonPlusActive = false;
+    }
+
+    public boolean isCurrentlyActive() {
+        return isEmoticonPlusActive && (expiredAt == null || expiredAt.isAfter(LocalDateTime.now()));
+    }
 }

@@ -50,12 +50,18 @@ public class Message {
     @Column(name = "parent_message_id")
     private Long parentMessageId;
 
-    public static Message create(ChatRoom room, User sender, String messageType) {
+    public static Message create(ChatRoom room, User sender, String messageType, Long parentMessageId) {
         Message message = new Message();
         message.room = room;
         message.sender = sender;
         message.messageType = messageType;
+        message.parentMessageId = parentMessageId;
         message.createdAt = LocalDateTime.now();
         return message;
+    }
+
+    public void delete() {
+        this.isDeleted = true;
+        this.deletedAt = LocalDateTime.now();
     }
 }
