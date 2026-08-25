@@ -55,8 +55,8 @@ class ChatRoomServiceTest {
 
     @Test
     void create_성공() {
-        TestUser me = registerUserWithProfile("room-a@example.com", "01066660001", "나");
-        TestUser other = registerUserWithProfile("room-b@example.com", "01066660002", "상대");
+        TestUser me = registerUserWithProfile("room-a@example.com", "01096660001", "나");
+        TestUser other = registerUserWithProfile("room-b@example.com", "01096660002", "상대");
 
         RoomParticipant myParticipant = chatRoomService.create(
                 me.userId(), "테스트방", "GROUP", me.profileId(), List.of(other.profileId()));

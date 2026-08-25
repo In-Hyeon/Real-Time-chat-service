@@ -2,6 +2,7 @@ package com.example.springbootpractice.domain.user.controller;
 
 import com.example.springbootpractice.domain.user.dto.ProfileCreateRequest;
 import com.example.springbootpractice.domain.user.dto.ProfileResponse;
+import com.example.springbootpractice.domain.user.dto.ProfileUpdateRequest;
 import com.example.springbootpractice.domain.user.entity.Profile;
 import com.example.springbootpractice.domain.user.service.ProfileService;
 import com.example.springbootpractice.global.response.ApiResponse;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,6 +45,15 @@ public class ProfileController {
     @GetMapping("/{id}")
     public ApiResponse<ProfileResponse> findById(@PathVariable Long id) {
         Profile profile = profileService.findById(id);
+        return ApiResponse.success(ProfileResponse.from(profile));
+    }
+
+    @PatchMapping("/{id}")
+    public ApiResponse<ProfileResponse> update(@AuthenticationPrincipal Long userId,
+                                                @PathVariable Long id,
+                                                @RequestBody ProfileUpdateRequest request) {
+        Profile profile = profileService.update(userId, id, request.nickname(), request.statusMessage(),
+                request.profileImageUrl());
         return ApiResponse.success(ProfileResponse.from(profile));
     }
 }

@@ -42,4 +42,18 @@ public class ProfileService {
         return profileRepository.findById(profileId)
                 .orElseThrow(() -> new BusinessException(ErrorCode.PROFILE_NOT_FOUND));
     }
+
+    @Transactional
+    public Profile update(Long userId, Long profileId, String nickname, String statusMessage,
+                           String profileImageUrl) {
+        Profile profile = profileRepository.findById(profileId)
+                .orElseThrow(() -> new BusinessException(ErrorCode.PROFILE_NOT_FOUND));
+
+        if (!profile.getUser().getId().equals(userId)) {
+            throw new BusinessException(ErrorCode.PROFILE_NOT_FOUND);
+        }
+
+        profile.updateProfile(nickname, statusMessage, profileImageUrl);
+        return profile;
+    }
 }

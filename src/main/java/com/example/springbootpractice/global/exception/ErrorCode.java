@@ -33,7 +33,8 @@ public enum ErrorCode {
     DEVICE_TOKEN_NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 디바이스 토큰입니다."),
     INVALID_DEVICE_TYPE(HttpStatus.BAD_REQUEST, "허용되지 않는 디바이스 타입입니다."),
     INVALID_CALL_TYPE(HttpStatus.BAD_REQUEST, "허용되지 않는 통화 타입입니다."),
-    INVALID_CALL_STATUS(HttpStatus.BAD_REQUEST, "허용되지 않는 통화 상태 값입니다.");
+    INVALID_CALL_STATUS(HttpStatus.BAD_REQUEST, "허용되지 않는 통화 상태 값입니다."),
+    INVALID_CURRENT_PASSWORD(HttpStatus.UNAUTHORIZED, "현재 비밀번호가 올바르지 않습니다.");
 
     private final HttpStatus status;
     private final String message;

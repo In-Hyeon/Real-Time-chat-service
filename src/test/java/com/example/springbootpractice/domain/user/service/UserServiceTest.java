@@ -1,6 +1,7 @@
 package com.example.springbootpractice.domain.user.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -40,5 +41,24 @@ class UserServiceTest {
     void findById_존재하지_않으면_예외() {
         BusinessException e = assertThrows(BusinessException.class, () -> userService.findById(999_999L));
         assertEquals(ErrorCode.USER_NOT_FOUND, e.getErrorCode());
+    }
+
+    @Test
+    void changePassword_성공() {
+        User user = userService.register("pwchange-a@example.com", "password123", "01099991001");
+
+        userService.changePassword(user.getId(), "password123", "newPassword456");
+
+        User updated = userService.findById(user.getId());
+        assertNotEquals("password123", updated.getPassword());
+    }
+
+    @Test
+    void changePassword_현재비밀번호틀리면_예외() {
+        User user = userService.register("pwchange-b@example.com", "password123", "01099991002");
+
+        BusinessException e = assertThrows(BusinessException.class,
+                () -> userService.changePassword(user.getId(), "wrongPassword", "newPassword456"));
+        assertEquals(ErrorCode.INVALID_CURRENT_PASSWORD, e.getErrorCode());
     }
 }

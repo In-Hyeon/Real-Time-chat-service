@@ -61,4 +61,17 @@ public class Profile {
         profile.updatedAt = LocalDateTime.now();
         return profile;
     }
+
+    public void updateProfile(String nickname, String statusMessage, String profileImageUrl) {
+        if (nickname != null) {
+            this.nickname = nickname;
+        }
+        if (statusMessage != null) {
+            this.statusMessage = statusMessage;
+        }
+        if (profileImageUrl != null) {
+            this.profileImageUrl = profileImageUrl;
+        }
+        this.updatedAt = LocalDateTime.now();
+    }
 }
