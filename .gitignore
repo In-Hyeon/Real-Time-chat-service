@@ -46,4 +46,5 @@ out/
 application-local.properties
 
 # Personal study notes (not for upload)
-docs/history/
+docs/logs/
+docs/study/
