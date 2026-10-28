@@ -10,9 +10,11 @@
 ## 기술 스택
 
 - Java 17
-- Spring Boot 4.1.0 (Spring Data JPA, Spring Web MVC)
+- Spring Boot 4.1.0 (Spring Data JPA, Spring Web MVC, Spring Security, WebSocket)
+- WebSocket(STOMP) 실시간 메시지
+- JWT (jjwt 0.12.6) — Access Token 30분 / Refresh Token 14일
 - Gradle
-- MySQL (mysql-connector-j)
+- MySQL 8 (mysql-connector-j)
 - Lombok
 
 ## 도메인 구성
@@ -34,22 +36,36 @@
 - [x] ERD 설계 및 DDL 작성 (`docs/erd/kakao_chat_schema_v2.sql`)
 - [x] 도메인 명세 정리 (`docs/domain_spec.md`)
 - [x] 21개 테이블 전체 JPA 엔티티 작성 (`src/main/java/.../domain/*/entity`)
-- [ ] DB 연결 설정 (`application.properties`)
-- [ ] Repository / Service / Controller 레이어
-- [ ] 실시간 채팅 기능 구현 (WebSocket 등)
+- [x] DB 연결 설정 (`application.properties` + `application-local.properties`)
+- [x] Repository / Service / Controller 레이어 (7개 도메인 전체)
+- [x] API 응답 통일(`ApiResponse`) 및 전역 예외 처리(`BusinessException` + `ErrorCode`)
+- [x] JWT 인증/인가 (로그인, 토큰 재발급, 로그아웃)
+- [x] 실시간 채팅 (WebSocket + STOMP, CONNECT 인증 / SUBSCRIBE·SEND 참여자 확인)
+- [x] 테스트 55개 통과
 
 ## 참고 문서
 
 - [`docs/domain_spec.md`](docs/domain_spec.md) — 도메인 명세
 - [`docs/erd/kakao_chat_schema_v2.sql`](docs/erd/kakao_chat_schema_v2.sql) — 최종 DDL (엔티티 매핑 기준)
-- [`docs/jpa-concepts.md`](docs/jpa-concepts.md) — JPA 개념 정리 (Entity, 연관관계의 주인, Fetch 전략 등)
 - [`docs/entity-summary.md`](docs/entity-summary.md) — 21개 엔티티 상세 정리
+- [`docs/logs/`](docs/logs) — 단계별 진행 기록과 트러블슈팅
+- [`docs/study/jpa-concepts.md`](docs/study/jpa-concepts.md) — JPA 개념 정리 (Entity, 연관관계의 주인, Fetch 전략 등)
 - [`imports.md`](imports.md) — 엔티티에서 사용한 import 라이브러리 정리
 
 ## 실행 방법
 
-현재는 DB 연결 설정 전 단계라 엔티티 컴파일까지만 확인 가능합니다.
+MySQL 8을 실행하고, `src/main/resources/application-local.properties`를 만들어 아래 값을 채웁니다 (git에 올라가지 않는 파일입니다).
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/<DB 이름>
+spring.datasource.username=<사용자>
+spring.datasource.password=<비밀번호>
+jwt.secret=<32바이트 이상 임의 문자열>
+```
 
 ```bash
-./gradlew compileJava
+./gradlew bootRun   # http://localhost:8080
+./gradlew test      # 테스트 실행
 ```
+
+테이블은 앱이 시작할 때 `schema.sql`이 만듭니다. 실시간 채팅은 브라우저 탭 두 개로 `http://localhost:8080/chat-test.html`을 열어 확인할 수 있습니다.
